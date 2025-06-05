@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Task Manager - Organize Your Productivity</title>
+    <meta name="description" content="A sleek, modern task manager to organize your daily activities with filtering and local storage">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <i class="fas fa-tasks"></i> Task Manager
+                </h1>
+                <p class="app-subtitle">Organize your workflow with style and efficiency</p>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <section class="task-input-section">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="newTaskInput" 
+                            placeholder="What needs to be done?" 
+                            aria-label="New task input"
+                            maxlength="100"
+                        >
+                        <span class="input-border"></span>
+                    </div>
+                    <button id="addTaskBtn" class="primary-btn" aria-label="Add new task">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </div>
+                <p class="input-hint">Press Enter or click Add to create a new task (100 char max)</p>
+            </section>
+
+            <section class="task-controls">
+                <div class="task-stats">
+                    <span id="taskCounter">0 tasks</span>
+                    <button id="clearCompleted" class="text-btn">
+                        <i class="fas fa-trash-alt"></i> Clear Completed
+                    </button>
+                </div>
+
+                <div class="filter-tabs" role="tablist">
+                    <button 
+                        class="filter-btn active" 
+                        data-filter="all" 
+                        role="tab" 
+                        aria-selected="true"
+                        aria-controls="taskList"
+                    >
+                        <i class="fas fa-list"></i> All Tasks
+                    </button>
+                    <button 
+                        class="filter-btn" 
+                        data-filter="pending" 
+                        role="tab" 
+                        aria-selected="false"
+                        aria-controls="taskList"
+                    >
+                        <i class="fas fa-clock"></i> Pending
+                    </button>
+                    <button 
+                        class="filter-btn" 
+                        data-filter="completed" 
+                        role="tab" 
+                        aria-selected="false"
+                        aria-controls="taskList"
+                    >
+                        <i class="fas fa-check-circle"></i> Completed
+                    </button>
+                </div>
+            </section>
+
+            <section class="task-list-section">
+                <ul id="taskList" class="task-list" role="list">
+                    <!-- Tasks will be dynamically inserted here -->
+                    <li class="empty-state">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>Your task list is empty</p>
+                        <p class="small">Add your first task above to get started</p>
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <div class="footer-content">
+                <p>
+                    <i class="fas fa-info-circle"></i> 
+                    <span id="storageStatus">Tasks are saved locally in your browser</span>
+                </p>
+                <p class="small">
+                    Neon Task Manager v1.0 &copy; <span id="currentYear"></span> | 
+                   
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
